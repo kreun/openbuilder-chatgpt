@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.send('index');
 });
 
 // json 업로드 (용량 큼 확인 필요)
@@ -34,17 +34,7 @@ router.post('/search',async function(req, res, next) {
         for (let i = 0; i < searchUID.length; i++) {
             const uid = searchUID[i];
             let data = db.getJSON(uid);
-            //이기호 저자의 '웬만해선 아무렇지 않다(2016년 출판, 마음산책)'를 추천합니다. 이 책은 (00)명의 친구들이 읽고 감상을 작성했습니다.
-            /*
-            {
-    "book": "웬만해선 아무렇지 않다",
-    "author": "이기호",
-    "publisher": "마음산책",
-    "year": "2016",
-    "subject": "한국소설, 2000년대 이후 한국소설, 국내도서",
-    "report": "도서 '웬만해선 아무렇지 않다'에서는 현 사회를 구성하는 다양한 모습의 사람들이 등장한다. 그들은 모두 각자의 결핍을 안고 있으며 이를 해결하려 하나 상황이 따라주지 않는다거나, 결핍 자체를 인지하지 못하여 사회의 그림자 속에서 살아가고 있었다. 그중 현대인의 모습을 가장 잘 표현해낸 단편은 '타인 바이러스'였다. 이 단편의 주인공은 매우 편협한 사고를 가지고 있었다. 상대에 대해 아는 것이라곤 매우 소량의 정보밖에 없음에도 타인을 부정적인 존재로 확대 해석하고 끈질기게 의심했다. 현대 사회에는 이러한 사람들을 쉽게 볼 수 있다. 타인을 믿지 않고 견제하다 결국 혐오로 이어지는 사회를 풍자한 이 소설을 보고 현대인들이 혐오에 깊이 빠져있다는 사실을 다시금 느꼈다. 이에 이들에게 타인과 소통하는 진정한 방법을 전하고 싶어졌다. 타인을 불신하는 사람들의 대표적인 공통점은 그들이 어떤 일을 결정하든 그 관건을 자기 자신으로 설정해두었다는 것이다."
-}
-            */
+            
             let count = db.getCountBook(data.book);
             texts.push(`${data.author} 저자의 '${data.book}(${data.year}년 출판, ${data.publisher})'를 추천합니다. 이 책은 (${count})명의 친구들이 읽고 감상을 작성했습니다.`);
         }

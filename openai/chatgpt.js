@@ -47,7 +47,7 @@ async function getChatGPT(pa_system,pa_prompt) {
     return { answer: response.data.choices[0].message.content.trim(), token: response.data.usage };
   } catch (error) {
     // 에러 핸들링
-    console.error("Error during API call:", error.data);
+    console.error("Error during API call:", error.message);
     throw error; // 또는 에러에 대한 사용자 정의 처리
   }
 }

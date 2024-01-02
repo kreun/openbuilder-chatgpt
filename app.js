@@ -7,6 +7,10 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var testRouter = require('./routes/test1');
+var test2Router = require('./routes/test2');
+var test3Router = require('./routes/test3');
+
 var app = express();
 
 // view engine setup
@@ -21,6 +25,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/test', testRouter);
+app.use('/test2', test2Router);
+app.use('/test3', test3Router);
 
 const db = require("./eb-db/db.js")
 
