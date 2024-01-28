@@ -11,6 +11,9 @@ var testRouter = require('./routes/test1');
 var test2Router = require('./routes/test2');
 var test3Router = require('./routes/test3');
 
+var searchRouter = require('./routes/search.js');
+var ebRouter = require('./routes/upload-eb.js');
+
 var app = express();
 
 // view engine setup
@@ -29,7 +32,10 @@ app.use('/test', testRouter);
 app.use('/test2', test2Router);
 app.use('/test3', test3Router);
 
-const db = require("./eb-db/db.js")
+app.use('/search', searchRouter);
+app.use('/eb', ebRouter);
+
+/* const db = require("./eb-db/db.js")
 
 app.post("/eb", function (req, res, next) {
     let data = req.body;
@@ -39,7 +45,7 @@ app.post("/eb", function (req, res, next) {
     }
     res.json({result:"api"})
 });
-
+ */
 
 
 // catch 404 and forward to error handler
@@ -55,7 +61,7 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
-  console.error(err.stack);
+  //console.error(err.stack);
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

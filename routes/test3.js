@@ -30,11 +30,10 @@ router.post('/', async function (req, res, next) {
 
   let { answer, token } = await getChatGPT("질문에 답변해 주세요.이모티콘을 문장 마지막에 넣어주세요.", q)
 
-
+    
 
   let sendCallback = await axios.post(callbackUrl, {
     version: "2.0",
-    
     template: {
         outputs: [
             {

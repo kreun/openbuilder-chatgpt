@@ -4,7 +4,7 @@
 const config = {
     url: "https://api.openai.com/v1/chat/completions",
     embedding_url: "https://api.openai.com/v1/embeddings",
-    key: "sk-",
+    key: "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",
     chat_model : "gpt-3.5-turbo-1106"
 }
 

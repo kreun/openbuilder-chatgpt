@@ -5,3 +5,4 @@
 cd /opt/bitnami/projects/chatbot   
 
 
+pm2 start ./bin/www --watch --time --name "bot" --ignore-watch="public/* data/* node_modules/*"

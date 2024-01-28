@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send('index');
+  res.send('index2');
 });
 
 // json 업로드 (용량 큼 확인 필요)
@@ -17,7 +17,7 @@ const eb = require("../openai/eb.js");
 const db = require("../eb-db/db.js")
 const gpt = require("../openai/chatgpt.js")
 
-router.post('/search',async function(req, res, next) {
+router.post('/search2',async function(req, res, next) {
 
     let result = {}
     let text = "";
@@ -75,7 +75,7 @@ router.post('/search',async function(req, res, next) {
     
     
     `
-    /* */
+   
     system = "유저의 질문에 대해서 제공되는 도서 정보를 확인하고, 질문에 맞는 도서 정보를 알려주세요. 도서에 대한 정보는 도서 정보에 있는 모든 내용을 포함해야 합니다."
     
     let prompt = `도서 정보 ===
